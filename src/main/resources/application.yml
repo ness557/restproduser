@@ -1,0 +1,13 @@
+activemq:
+  address: tcp://localhost:61616
+  topic:
+    poem: POEM
+    activity: ACTIVITY
+
+auth:
+  host: http://localhost:8080/
+  path:
+    user: token/getUser
+
+server:
+  port: 8082

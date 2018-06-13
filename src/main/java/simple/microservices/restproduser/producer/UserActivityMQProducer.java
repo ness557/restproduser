@@ -16,7 +16,6 @@ public class UserActivityMQProducer implements UserActivityProducer {
     @Value("${activemq.topic.activity}")
     private String topicName;
 
-
     @Override
     public void produceActivity(String username) throws Exception {
         ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory(activeMQAddress);
