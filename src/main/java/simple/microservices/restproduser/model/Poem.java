@@ -3,9 +3,7 @@ package simple.microservices.restproduser.model;
 import lombok.*;
 
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @XmlRootElement
 @Getter @Setter
@@ -17,9 +15,9 @@ public class Poem {
 
     private String data;
 
-    private List<String> tags;
+    private List<Tag> tags;
 
-    public void addTag(String tag){
+    public void addTag(Tag tag){
         tags.add(tag);
     }
 }

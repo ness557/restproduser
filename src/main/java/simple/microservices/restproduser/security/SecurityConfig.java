@@ -20,14 +20,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.addFilterBefore(authenticationFilter, BasicAuthenticationFilter.class)
+        http
+                .addFilterBefore(authenticationFilter, BasicAuthenticationFilter.class)
                 .authorizeRequests()
-                .antMatchers("/poem/**").hasRole("USER")
-                .antMatchers("/user/**").hasRole("USER")
-                .antMatchers("/login").permitAll()
+                    .antMatchers("/**").hasRole("USER")
 
                 .and().sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().csrf().disable();
     }
 }

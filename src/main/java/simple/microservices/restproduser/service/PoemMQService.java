@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import simple.microservices.restproduser.model.Poem;
+import simple.microservices.restproduser.model.Tag;
 import simple.microservices.restproduser.producer.PoemProducer;
 
 @Service

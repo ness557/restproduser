@@ -34,7 +34,7 @@ public class TokenAuthRestService implements TokenAuthService {
     @Value("${auth.path.user}")
     private String path;
 
-    public TokenAuthRestService(){
+    public TokenAuthRestService() {
         restTemplate = new RestTemplate();
     }
 
@@ -50,15 +50,21 @@ public class TokenAuthRestService implements TokenAuthService {
 
         ResponseEntity entity = restTemplate.getForEntity(req, JSONObject.class);
 
-        if (entity.getStatusCode().equals(HttpStatus.OK)){
+        if (entity.getStatusCode().equals(HttpStatus.OK)) {
             JSONObject userObject = (JSONObject) entity.getBody();
 
             logger.info("Got user: " + userObject.toJSONString());
 
             String auths = (String) userObject.get("authorities");
+
+            // remove [ ]
+            auths = auths.substring(1, auths.length() - 1);
+
             List<GrantedAuthority> authList = new ArrayList();
-            for (String str: StringUtils.split(auths, ",")) {
-                authList.add(new SimpleGrantedAuthority(str));
+            for (String str : StringUtils.split(auths, ", ")) {
+
+                authList.add(
+                        new SimpleGrantedAuthority(str));
             }
 
             return new User((String) userObject.get("username"),

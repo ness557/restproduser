@@ -1,6 +1,7 @@
 package simple.microservices.restproduser.security;
 
 import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,10 +64,9 @@ public class TokenAuthFilter extends GenericFilterBean {
                 return;
             }
 
-            final UsernamePasswordAuthenticationToken authentication =
-                    new UsernamePasswordAuthenticationToken(user,
-                            user,
-                            user.getAuthorities());
+
+            final UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+                    user, user, user.getAuthorities());
 
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
